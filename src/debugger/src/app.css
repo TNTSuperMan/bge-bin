@@ -1,0 +1,29 @@
+.long{
+    float: left;
+    display: flex;
+    flex-direction: row;
+}
+table, th, td{
+    border: 1px black solid;
+}
+span{
+    display: block;
+}
+span.inlist{
+    display: inline-block;
+    padding: 0 3px;
+    margin: 0 2px;
+    border: 1px #000 solid;
+    border-radius: 5px;
+}
+fieldset label{
+    display: inline-block;
+    border: 1px black solid;
+    user-select: none;
+    padding: 2px;
+    margin: 1px;
+    border-radius: 5px;
+}
+canvas{
+    border: 5px black ridge;
+}
