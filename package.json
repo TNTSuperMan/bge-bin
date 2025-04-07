@@ -17,7 +17,7 @@
     "build": "bun build --outdir=dist ./src/index.ts"
   },
   "dependencies": {
-    "bgex-compiler": "0.0.23",
+    "bgex-compiler": "0.0.24",
     "preact": "^10.26.4",
     "vite": "^6.2.3"
   }

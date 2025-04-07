@@ -4,7 +4,7 @@
     "": {
       "name": ".bin",
       "dependencies": {
-        "bgex-compiler": "0.0.23",
+        "bgex-compiler": "0.0.24",
         "preact": "^10.26.4",
         "vite": "^6.2.3",
       },
@@ -185,7 +185,7 @@
 
     "babel-plugin-transform-hook-names": ["babel-plugin-transform-hook-names@1.0.2", "", { "peerDependencies": { "@babel/core": "^7.12.10" } }, "sha512-5gafyjyyBTTdX/tQQ0hRgu4AhNHG/hqWi0ZZmg2xvs2FgRkJXzDNKBZCyoYqgFkovfDrgM8OoKg8karoUvWeCw=="],
 
-    "bgex-compiler": ["bgex-compiler@0.0.23", "", { "dependencies": { "acorn": "^8.14.0" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-mi48A0UcxhjzD8VznwzLc2msR7OFvsgd78+ns84uUA4zb5QC32+/WLJBjLDu1ekObBVegiQfd9Se4d/j+uxSPA=="],
+    "bgex-compiler": ["bgex-compiler@0.0.24", "", { "dependencies": { "acorn": "^8.14.0" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-mpTiDSl/MPwpmwh9EUTAQVO1D5hR3S+AiUA42CJCP6sgdB5oydXDszGKfYJQZ5jVUbYmdd3r8K5dLxUDMtgT/A=="],
 
     "boolbase": ["boolbase@1.0.0", "", {}, "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="],
 
