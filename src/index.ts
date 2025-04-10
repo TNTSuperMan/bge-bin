@@ -21,7 +21,7 @@ if(process.argv.length < 3){
             const server = serve({
                 routes: { "/": app }
             });
-            console.log(`Running on http://localhost:${server.port}`);
+            console.log(`Running on ${server.url}`);
             break;
         case "build":
             console.time("compile");
