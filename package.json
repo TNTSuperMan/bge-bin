@@ -3,7 +3,6 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@preact/preset-vite": "^2.10.1",
     "@types/bun": "^1.2.6",
     "@types/node": "^22.13.13"
   },
