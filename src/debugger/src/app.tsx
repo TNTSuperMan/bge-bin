@@ -2,6 +2,19 @@ import { useEffect, useRef, useState } from 'preact/hooks'
 import './app.css'
 import { createRuntime, Runtime } from './runtime'
 import { ReverseAsm } from './rev_asm';
+import { useLibkey } from 'libkey';
+
+const keymap = {
+  "ArrowUp":    0,
+  "ArrowDown":  1,
+  "ArrowLeft":  2,
+  "ArrowRight": 3,
+  "KeyV": 4,
+  "KeyC": 5,
+  "KeyX": 6,
+  "KeyZ": 7,
+}
+
 export function App() {
   const runtime = useRef<Runtime>();
   const [memi, setMemi] = useState(0);
@@ -53,6 +66,19 @@ export function App() {
     if(!runtime.current){
       const ctx = document.querySelector("canvas")?.getContext("2d");
       if(!ctx) throw new Error("Failed to create canvas context");
+      const k = useLibkey(document.body);
+      k.onupdate(state=>{
+        input.current = [
+          state.arrow.up,
+          state.arrow.down,
+          state.arrow.left,
+          state.arrow.right,
+          state.keys.has("KeyV"),
+          state.keys.has("KeyC"),
+          state.keys.has("KeyZ"),
+          state.keys.has("KeyX"),
+        ]
+      })
       createRuntime({
         ctx,
         key: ()=>parseInt(

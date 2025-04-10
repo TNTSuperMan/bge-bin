@@ -18,6 +18,7 @@
   "dependencies": {
     "bge-wasm": "^0.0.6",
     "bgex-compiler": "0.0.24",
+    "libkey": "^0.0.5",
     "preact": "^10.26.4"
   }
 }
