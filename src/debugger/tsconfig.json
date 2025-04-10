@@ -5,6 +5,8 @@
     "moduleResolution": "bundler",
     "lib": ["esnext", "dom"],
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 }
