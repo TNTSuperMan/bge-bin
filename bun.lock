@@ -4,9 +4,9 @@
     "": {
       "name": ".bin",
       "dependencies": {
+        "bge-wasm": "^0.0.6",
         "bgex-compiler": "0.0.24",
         "preact": "^10.26.4",
-        "vite": "^6.2.3",
       },
       "devDependencies": {
         "@preact/preset-vite": "^2.10.1",
@@ -184,6 +184,8 @@
     "acorn": ["acorn@8.14.1", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg=="],
 
     "babel-plugin-transform-hook-names": ["babel-plugin-transform-hook-names@1.0.2", "", { "peerDependencies": { "@babel/core": "^7.12.10" } }, "sha512-5gafyjyyBTTdX/tQQ0hRgu4AhNHG/hqWi0ZZmg2xvs2FgRkJXzDNKBZCyoYqgFkovfDrgM8OoKg8karoUvWeCw=="],
+
+    "bge-wasm": ["bge-wasm@0.0.6", "", {}, "sha512-zcPTpu4FlgJSbjYuB5MV6z71HRDCSaqbsH4SWFzenAKRorl4BNOtHkE970/VLEA06EVkEiwVaBsPVihcK66MYg=="],
 
     "bgex-compiler": ["bgex-compiler@0.0.24", "", { "dependencies": { "acorn": "^8.14.0" }, "peerDependencies": { "typescript": "^5.0.0" } }, "sha512-mpTiDSl/MPwpmwh9EUTAQVO1D5hR3S+AiUA42CJCP6sgdB5oydXDszGKfYJQZ5jVUbYmdd3r8K5dLxUDMtgT/A=="],
 

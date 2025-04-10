@@ -1,10 +1,10 @@
 #!/usr/bin/env bun
 
+import app from "./debugger/index.html";
 import { BGEXCompile } from "bgex-compiler";
-import { $, write } from "bun";
-import { existsSync, mkdirSync, watch, watchFile } from "fs";
+import { $, serve, write } from "bun";
+import { existsSync, mkdirSync, watchFile } from "fs";
 import { resolve } from "path";
-import { createServer } from "vite";
 
 console.log("BGE Toolkit");
 
@@ -18,25 +18,10 @@ if(process.argv.length < 3){
     switch(process.argv[2]){
         case "run":
             $`bun --watch ${resolve(__dirname, "hotbuild.ts")} ${entry}`.then(()=>{});
-            const server = await createServer({
-                root: resolve(__dirname, "debugger"),
-                server: {
-                    port: 4000
-                }
+            const server = serve({
+                routes: { "/": app }
             });
-            await server.listen();
-            server.printUrls();
-            watchFile(resolve(__dirname, "..", "tmp", "out.bin"), {}, ()=>
-                server.ws.send({
-                    type: "update",
-                    updates: [{
-                        type: "js-update",
-                        path: "/src/runtime.ts",
-                        acceptedPath: "/src/runtime.ts",
-                        timestamp: Date.now()
-                    }]
-                })
-            )
+            console.log(`Running on http://localhost:${server.port}`);
             break;
         case "build":
             console.time("compile");

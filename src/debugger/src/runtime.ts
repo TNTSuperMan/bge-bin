@@ -1,7 +1,9 @@
 
-import init, { Runtime as BGERuntime } from "bge-wasm";
-import rawROM from "../../../tmp/out.bin?url"
-const Pinit = init().then(e=>e.init_panic_fook());
+import init, { Runtime as BGERuntime } from "bge-wasm/web";
+import wasm from "bge-wasm/wasm";
+//@ts-ignore
+import rawROM from "../../../tmp/out.bin"
+const Pinit = init(wasm as any).then(e=>e.init_panic_fook());
 const rom = fetch(rawROM).then(e=>e.arrayBuffer()).then(e=>new Uint8Array(e));
 
 export type Runtime = {
