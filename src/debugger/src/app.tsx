@@ -3,6 +3,14 @@ import './app.css'
 import { createRuntime, Runtime } from './runtime'
 import { ReverseAsm } from './rev_asm';
 import { useLibkey } from 'libkey';
+//@ts-ignore
+import mmraw from "../../../tmp/var.map";
+let memmap:  [number, string, string][] | void;
+fetch(mmraw).then(e=>e.text()).then(e=>
+  memmap = e.split("\n").map(e=>{
+    const r = e.split(",")
+    return [parseInt(r[0], 16), r[1], r[2]]
+  }).splice(1) as any);
 
 const keymap = {
   "ArrowUp":    0,
@@ -107,12 +115,15 @@ export function App() {
       <div className="long">
         <table>
           <thead>
-            <tr><th>Addr</th><th>Value</th></tr>
+            <tr><th>Addr</th><th>Value</th><th>Name?</th></tr>
           </thead>
           <tbody>
             {emuinfo.memory.map((e,i)=><tr key={i+memi} style={{background:i+memi==emuinfo.pc?"#f55":void 0}}>
               <td>{(i+memi).toString(16).padStart(4, "0")}</td>
               <td>{e}</td>
+              { !memmap ? false :
+                <td title={memmap.find(e=>e[0]==i+memi)?.[2]}>{memmap.find(e=>e[0]==i+memi)?.[1]}</td>
+              }
             </tr>)}
           </tbody>
         </table>
