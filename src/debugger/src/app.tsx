@@ -25,7 +25,7 @@ const keymap = {
 
 export function App() {
   const runtime = useRef<Runtime>();
-  const [memi, setMemi] = useState(0);
+  const [memi, setMemi] = useState(0xa000);
   const [rasm, setRasm] = useState<[number,string][]>([]);
   const [err, setErr] = useState("");
   const [running, setRunning] = useState(true);
@@ -111,7 +111,7 @@ export function App() {
   return (
     <>
       <h1>BGE Debugger</h1>
-      <input type="text" onChange={e=>setMemi(parseInt((e.target as HTMLInputElement).value, 16))} />
+      <input type="text" value={memi.toString(16)} onChange={e=>setMemi(parseInt((e.target as HTMLInputElement).value, 16))} />
       <div className="long">
         <table>
           <thead>
