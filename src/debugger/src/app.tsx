@@ -134,7 +134,7 @@ export function App() {
           <tbody>
             {rasm.map(e=><tr key={e[0]} style={{background:e[0]==emuinfo.pc?"#f55":void 0}}>
               <td>{e[0].toString(16).padStart(4, "0")}</td>
-              <td>{e[1]}</td>
+              <td class="code">{e[1]}</td>
             </tr>)}
           </tbody>
         </table>

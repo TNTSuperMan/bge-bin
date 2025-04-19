@@ -5,6 +5,10 @@
 }
 table, th, td{
     border: 1px black solid;
+    font-family: monospace;
+}
+.code{
+    width: 120px;
 }
 span{
     display: block;
