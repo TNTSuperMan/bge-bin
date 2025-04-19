@@ -111,7 +111,7 @@ export function App() {
   return (
     <>
       <h1>BGE Debugger</h1>
-      <input type="text" value={memi.toString(16)} onChange={e=>setMemi(parseInt((e.target as HTMLInputElement).value, 16))} />
+      <input type="text" value={memi.toString(16)} onInput={e=>setMemi(parseInt((e.target as HTMLInputElement).value, 16))} />
       <div className="long">
         <table>
           <thead>
