@@ -30,4 +30,5 @@ fieldset label{
 }
 canvas{
     border: 5px black ridge;
+    image-rendering: pixelated;
 }
