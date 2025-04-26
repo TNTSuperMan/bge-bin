@@ -91,14 +91,17 @@ export function App() {
         ctx,
         key: ()=>parseInt(
           input.current.map(e=>e?"1":"0").join(""), 2),
-        onRedraw: ()=>{
+        onRedraw(){},
+        saveSRAM(){},
+        loadSRAM(){return new Uint8Array}
+      }).then(e=>{
+        runtime.current = e;
+        setInterval(()=>{
           let isr_: boolean = false;
           setRunning(e=>isr_=e)
           if(isr_) Emulate(true);
-        },
-        saveSRAM(){},
-        loadSRAM(){return new Uint8Array}
-      }).then(e=>runtime.current = e)
+        }, 1000 / 30);
+      })
     }
   }, [runtime]);
   useEffect(()=>{
