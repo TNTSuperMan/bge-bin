@@ -8,7 +8,7 @@ table, th, td{
     font-family: monospace;
 }
 .code{
-    width: 120px;
+    width: 100px;
 }
 span{
     display: block;
