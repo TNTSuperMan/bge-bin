@@ -20,7 +20,7 @@ export const ReverseAsm = (runtime: Runtime, count: number, back: number): [numb
         if(oprText == "push"){
             const pc = i;
             const value = runtime.load(++i);
-            asmSet.push([pc, `push ${value}(0x${value.toString(16).padStart(4,"0")})`]);
+            asmSet.push([pc, `push ${value}(0x${value.toString(16).padStart(2,"0")})`]);
         }else if(oprText){
             asmSet.push([i, oprText]);
         }else{
