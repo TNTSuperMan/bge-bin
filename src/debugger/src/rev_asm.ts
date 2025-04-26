@@ -24,7 +24,7 @@ export const ReverseAsm = (runtime: Runtime, count: number, back: number): [numb
         }else if(oprText){
             asmSet.push([i, oprText]);
         }else{
-            asmSet.push([i, `${oprRaw}(0x${oprRaw.toString(16).padStart(4, "0")})`]);
+            asmSet.push([i, `${oprRaw}(0x${oprRaw.toString(16).padStart(2, "0")})`]);
         }
         i++;
     }
