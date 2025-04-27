@@ -28,7 +28,7 @@ export function App() {
   const [memi, setMemi] = useState(0xa000);
   const [rasm, setRasm] = useState<[number,string][]>([]);
   const [err, setErr] = useState("");
-  const [running, setRunning] = useState(true);
+  const [running, setRunning] = useState(false);
   const input = useRef(
     Array(8).fill(false) as
       [boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean]
