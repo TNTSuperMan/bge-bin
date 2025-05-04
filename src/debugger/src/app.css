@@ -1,10 +1,20 @@
+html{
+    background: #000;
+    color: #fff;
+    border-color: #fff;
+}
+button{
+    background: #222;
+    color: #fff;
+    margin: 5px 3px;
+}
 .long{
     float: left;
     display: flex;
     flex-direction: row;
 }
 table, th, td{
-    border: 1px black solid;
+    border: 1px #444 solid;
     font-family: monospace;
 }
 .code{
@@ -17,18 +27,19 @@ span.inlist{
     display: inline-block;
     padding: 0 3px;
     margin: 0 2px;
-    border: 1px #000 solid;
+    border: 1px #fff solid;
     border-radius: 5px;
 }
 fieldset label{
     display: inline-block;
-    border: 1px black solid;
+    border: 1px #333 solid;
     user-select: none;
     padding: 2px;
     margin: 1px;
     border-radius: 5px;
 }
 canvas{
-    border: 5px black ridge;
+    background:red;
+    border: 5px #fff ridge;
     image-rendering: pixelated;
 }
