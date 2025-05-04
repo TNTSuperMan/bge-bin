@@ -34,7 +34,10 @@ if(process.argv.length < 3){
                     "addr,name,at\n" + result[1].map(e=>
                         `${e[0].toString(16)},${e[2]},${e[1]}`)
                     .join("\n")),
-                write(resolve(entry, "dist", "out.bin"), new Uint8Array(result[2]??[]))
+                write(resolve(entry, "dist", "out.bin"), new Uint8Array(result[2]??[])),
+                write(resolve(entry, "dist", "tag.map"), "addr,name\n"+result[3]?.entries().map(e=>
+                    `${e[1].toString(16).padStart(4, "0")},${e[0]}`
+                ).toArray().join("\n"))
             ]);
             console.timeEnd("compile");
             if(!result[2]) console.log("Failed to generate bin");
