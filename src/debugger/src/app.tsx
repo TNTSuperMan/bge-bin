@@ -22,17 +22,10 @@ export function App() {
     Array(8).fill(false) as
       [boolean,boolean,boolean,boolean,boolean,boolean,boolean,boolean]
   );
-  const [emuinfo, setEmuinfo] = useState<{
-    memory: number[],
-    stack: number[],
-    callstack: number[],
-    pc: number,
-    ccc: bigint,
-    time: number
-  }>({
-    memory: [],
-    stack: [],
-    callstack: [],
+  const [emuinfo, setEmuinfo] = useState({
+    memory: [] as number[],
+    stack: [] as number[],
+    callstack: [] as number[],
     pc: 0,
     ccc: 0n,
     time: 0
