@@ -166,7 +166,7 @@ export function App() {
         </span>)
       }</span>
       <span>Callstack: { emuinfo.callstack.map((e,i)=><span key={i} className="inlist">
-          {e}
+          {e.toString(16).padStart(4, "0")}
         </span>)
       }</span>
     </>
