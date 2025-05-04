@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 import app from "./debugger/index.html";
-import { $, serve } from "bun";
+import { serve, spawn } from "bun";
 import { resolve } from "path";
 import { build } from "./build";
 
@@ -16,7 +16,12 @@ if(process.argv.length < 3){
     const entry = process.argv[3] ?? process.cwd();
     switch(process.argv[2]){
         case "run":
-            $`bun --watch ${resolve(__dirname, "hotbuild.ts")} ${entry}`;
+            const buildProcess = spawn({
+                cmd: ["bun", "--watch", resolve(__dirname, "hotbuild.ts"), entry],
+                stdout: "pipe"
+            });
+            process.on("SIGINT", () => 
+                buildProcess.kill("SIGINT"));
             const server = serve({
                 routes: { "/": app }
             });
