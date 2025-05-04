@@ -12,17 +12,6 @@ fetch(mmraw).then(e=>e.text()).then(e=>
     return [parseInt(r[0], 16), r[1], r[2]]
   }).splice(1) as any);
 
-const keymap = {
-  "ArrowUp":    0,
-  "ArrowDown":  1,
-  "ArrowLeft":  2,
-  "ArrowRight": 3,
-  "KeyV": 4,
-  "KeyC": 5,
-  "KeyX": 6,
-  "KeyZ": 7,
-}
-
 export function App() {
   const runtime = useRef<Runtime>();
   const [memi, setMemi] = useState(0xa000);
