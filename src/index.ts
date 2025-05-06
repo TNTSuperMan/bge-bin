@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 
 import app from "./debugger/index.html";
-import { serve, spawn } from "bun";
+import { file, serve, spawn } from "bun";
 import { resolve } from "path";
 import { build } from "./build";
 
@@ -20,10 +20,14 @@ if(process.argv.length < 3){
                 cmd: ["bun", "--watch", resolve(__dirname, "hotbuild.ts"), entry],
                 stdout: "pipe"
             });
-            process.on("SIGINT", () => 
-                buildProcess.kill("SIGINT"));
-            const server = serve({
-                routes: { "/": app }
+            const server = serve({ routes: {
+                "/": app,
+                "/rom": () => new Response(file(resolve(__dirname, "..", "tmp", "out.bin"))),
+                "/varmap": () => new Response(file(resolve(__dirname, "..", "tmp", "var.map"))),
+            }});
+            process.on("SIGINT", () => {
+                buildProcess.kill("SIGINT");
+                process.exit();
             });
             console.log(`Running on ${server.url}`);
             break;

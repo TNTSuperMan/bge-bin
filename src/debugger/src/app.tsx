@@ -3,10 +3,8 @@ import './app.css'
 import { createRuntime, Runtime } from './runtime'
 import { ReverseAsm } from './rev_asm';
 import { useLibkey } from 'libkey';
-//@ts-ignore
-import mmraw from "../../../tmp/var.map";
 let memmap:  [number, string, string][] | void;
-fetch(mmraw).then(e=>e.text()).then(e=>
+fetch("/varmap").then(e=>e.text()).then(e=>
   memmap = e.split("\n").map(e=>{
     const r = e.split(",")
     return [parseInt(r[0], 16), r[1], r[2]]
