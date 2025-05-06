@@ -8,14 +8,14 @@ import { build } from "./build";
 console.log("BGE Toolkit");
 
 const usage = () => 
-    console.log("usage: bge [run|build] [entrydir?]");
+    console.log("usage: bge [dev|build] [entrydir?]");
 
 if(process.argv.length < 3){
     usage();
 }else{
     const entry = process.argv[3] ?? process.cwd();
     switch(process.argv[2]){
-        case "run":
+        case "dev":
             const buildProcess = spawn({
                 cmd: ["bun", "--watch", resolve(__dirname, "hotbuild.ts"), entry],
                 stdout: "pipe"
