@@ -28,7 +28,7 @@ export function App() {
     ccc: 0n,
     time: 0
   });
-  function Emulate(isf: boolean){
+  async function Emulate(isf: boolean){
     const rt = runtime.current;
     if(rt){
       rt.Key();
@@ -37,7 +37,7 @@ export function App() {
       const end = performance.now();
       let memi = 0;
       setMemi(e => memi = e);
-      rt.Draw();
+      await rt.Draw();
       setErr(result);
       setEmuinfo({
         memory: Array(20).fill(0).map((_,i)=>rt.Load(i+memi)??0),
@@ -76,10 +76,14 @@ export function App() {
         loadSRAM(){return new Uint8Array}
       }).then(e=>{
         runtime.current = e;
+        let lastResolved = true;
         setInterval(()=>{
-          let isr_: boolean = false;
-          setRunning(e=>isr_=e)
-          if(isr_) Emulate(true);
+          if(lastResolved){
+            lastResolved = false;
+            let isr_: boolean = false;
+            setRunning(e=>isr_=e)
+            if(isr_) Emulate(true).then(()=>lastResolved = true);
+          }
         }, 1000 / 30);
       })
     }

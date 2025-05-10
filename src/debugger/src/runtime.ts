@@ -32,15 +32,17 @@ export const createRuntime = async function({ctx, key, onRedraw}: {
   let images: HTMLImageElement[] = [];
   return {
     Key: () => runtime.set_key_state(key()),
-    Draw(){
+    async Draw(){
       const state = runtime.frame_state();
       if(state._do_updimg){
         images.forEach(e=>URL.revokeObjectURL(e.src));
-        images = state.get_imgs().map(e=>{
-          const img = new Image();
-          img.src = URL.createObjectURL(new Blob([new Uint8Array(e.get())],{type:"image/png"}))
-          return img;
-        })
+        images = await Promise.all(
+          state.get_imgs().map(e=>
+            new Promise<HTMLImageElement>(res=>{
+              const img = new Image();
+              img.onload = () => res(img);
+              img.src = URL.createObjectURL(new Blob([new Uint8Array(e.get())],{type:"image/png"}))
+        })));
       }
       if(state._do_redraw){
         requestAnimationFrame(()=>{
